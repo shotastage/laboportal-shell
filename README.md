@@ -1,3 +1,3 @@
-# NX Portal Frontend Shell
+# Labo Portal Online Communication Web
 
-This program is front-end web shell for NX-Portal written with React.js
+>> Now under construction.
