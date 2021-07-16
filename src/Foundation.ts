@@ -1,4 +1,4 @@
-export const split = (array, n) =>
+export const split = (array: Array<any>, n: number) => {
     array.reduce(
         (a, c, i) =>
             i % n == 0
@@ -6,8 +6,9 @@ export const split = (array, n) =>
                 : [...a.slice(0, -1), [...a[a.length - 1], c]],
         []
     );
+};
 
-export const formatDate = (date, format) => {
+export const formatDate = (date: any, format: string): string => {
     if (!format) {
         format = "YYYY/MM/DD hh:mm:ss";
     }
@@ -20,22 +21,4 @@ export const formatDate = (date, format) => {
     format = format.replace(/ss/g, ("0" + date.getSeconds()).slice(-2));
 
     return format;
-};
-
-export const convertDateString = djDateString => {
-    return djDateString
-        .split("T")[0]
-        .split("-")
-        .join("/");
-};
-
-export const convertTimeString = djDateString => {
-    let processing = djDateString
-        .split("T")[1]
-        .split("+")[0]
-        .split(":")
-        .slice(0, 2)
-        .join(":");
-
-    return processing;
 };
