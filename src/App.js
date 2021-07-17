@@ -33,21 +33,21 @@ import RGRootIcon from "./assets/icons/RGRootIcon.svg";
 import MailIcon from "./assets/icons/MailIcon.svg";
 import styled from "styled-components";
 
-const ArticleDirectory = styled.div`
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-`;
+const articleDirectoryStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+    overflowX: 'scroll'
+};
 
-const ArticleCard = styled.div`
-    width: 390px;
-    height: 200px;
-    background: white;
-    padding: 15px;
-    padding-top: 3px;
-    margin: 10px;
-    border-radius: 10px;
-`;
+const articleCardStyle = {
+    width: '390px',
+    height: '200px',
+    background: 'white',
+    padding: '15px',
+    paddingTop: '3px',
+    margin: '10px',
+    borderRadius: '10px'
+};
 
 // Page Componrnts
 // ------------------------------------------------------------------------------
@@ -173,32 +173,32 @@ class App extends React.Component {
 
                     <h1>{t("update")}</h1>
 
-                    <ArticleDirectory>
-                        <ArticleCard>
+                    <div style={articleDirectoryStyle}>
+                        <div style={articleCardStyle}>
                             <h3>新しいポータルについて</h3>
                             <p>
                                 RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
                             </p>
-                        </ArticleCard>
-                        <ArticleCard>
+                        </div>
+                        <div style={articleCardStyle}>
                             <h3>新しいポータルについて</h3>
                             <p>
                                 RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
                             </p>
-                        </ArticleCard>
-                        <ArticleCard>
+                        </div>
+                        <div style={articleCardStyle}>
                             <h3>新しいポータルについて</h3>
                             <p>
                                 RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
                             </p>
-                        </ArticleCard>
-                        <ArticleCard>
+                        </div>
+                        <div style={articleCardStyle}>
                             <h3>新しいポータルについて</h3>
                             <p>
                                 RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
                             </p>
-                        </ArticleCard>
-                    </ArticleDirectory>
+                        </div>
+                    </div>
                 </AppContainer>
             </>
         );
