@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, MarginSparcer } from "../components/Grid";
 
 import NavigationBar from "../pageComponents/NavBar/NavigationBar";
-import PlivacyDoc from "../components/PrivacyPolicy";
 
 class PrivacyPolicy extends React.Component {
     render() {
@@ -12,7 +11,6 @@ class PrivacyPolicy extends React.Component {
                 <MarginSparcer />
                 <Container>
                     <Row>
-                        <PlivacyDoc />
                     </Row>
                 </Container>
             </>

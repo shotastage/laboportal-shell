@@ -4,7 +4,6 @@ import { Button } from "../components/Buttons";
 import { withTranslation } from "react-i18next";
 import { MarginSparcer, Container, Row } from "../components/Grid";
 import TermDoc from "../components/Terms";
-import PrivacyDoc from "../components/PrivacyPolicy";
 import Animate from "animate.css-react";
 import "animate.css/animate.css";
 
@@ -230,7 +229,6 @@ class SignUp extends React.Component {
                                 </AuthCardHeadings>
                                 <ScrollableDoc>
                                     <TermDoc />
-                                    <PrivacyDoc />
                                 </ScrollableDoc>
                                 <Button onClick={() => this.register()}>
                                     {t("SignUp.SubmitAgreement")}
