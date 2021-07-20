@@ -9,7 +9,7 @@ export const ValidationType = {
 };
 
 export class Validator {
-    static validate(type, text) {
+    static validate(type: string, text: string) {
         let isValid = true;
 
         switch (type) {
@@ -43,13 +43,13 @@ export class Validator {
     }
 }
 
-function passwordCondition(passStr) {
+function passwordCondition(passStr: string) {
     let passwdString = passStr.split("");
     let numberCount = 0;
     let symbolCount = 0;
     let alphabetCount = 0;
     for (var i = 0; i < passwdString.length; i++) {
-        if (isNaN(passwdString[i])) {
+        if (isNaN(Number(passwdString[i]))) {
             numberCount += 1;
         }
     }
