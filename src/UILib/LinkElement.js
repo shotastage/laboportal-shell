@@ -3,25 +3,25 @@ import React from "react";
 // Page Componrnts
 // ------------------------------------------------------------------------------
 class LinkElement extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            data: [],
-            originUrl: "",
-            articles: []
-        };
-    }
-
-    toLink = () => {
-        window.location.href = this.props.linkURL;
+    this.state = {
+      data: [],
+      originUrl: "",
+      articles: [],
     };
+  }
 
-    render() {
-        const { t } = this.props;
+  toLink = () => {
+    window.location.href = this.props.linkURL;
+  };
 
-        return <span onClick={this.toLink} />;
-    }
+  render() {
+    const { t } = this.props;
+
+    return <span onClick={this.toLink} />;
+  }
 }
 
 export default LinkElement;

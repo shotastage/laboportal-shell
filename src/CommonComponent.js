@@ -8,12 +8,12 @@ const mediaMobile = mediaQuery.lessThan("medium");
 /// Page specific components
 // ------------------------------------------------------------------------------
 export const Container = styled.div`
-    margin-left: 30px;
-    margin-right: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 `;
 
 export const Heading1 = styled.h1`
-    font-size: 3.1rem;
-    margin-left: 15px;
-    font-weight: 300;
+  font-size: 3.1rem;
+  margin-left: 15px;
+  font-weight: 300;
 `;

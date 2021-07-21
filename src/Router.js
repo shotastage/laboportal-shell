@@ -1,8 +1,8 @@
 import React from "react";
 import {
-    BrowserRouter as Switch,
-    Route,
-    BrowserRouter
+  BrowserRouter as Switch,
+  Route,
+  BrowserRouter,
 } from "react-router-dom";
 
 // Import pages
@@ -20,28 +20,25 @@ import LicenseDoc from "./pages/License";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function Router() {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/" component={App} />
-                <Route exact path="/meetings" component={Meetings} />
-                <Route exact path="/wip" component={WIP} />
-                <Route exact path="/term" component={TERM} />
-                <Route exact path="/blog" component={Blog} />
-                <Route exact path="/thesis" component={Thesis} />
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route exact path="/meetings" component={Meetings} />
+        <Route exact path="/wip" component={WIP} />
+        <Route exact path="/term" component={TERM} />
+        <Route exact path="/blog" component={Blog} />
+        <Route exact path="/thesis" component={Thesis} />
 
-                <Route path="/m/signin" component={Login} />
-                <Route path="/m/signup" component={SignUp} />
-                <Route path="/m/logout" component={Logout} />
+        <Route path="/m/signin" component={Login} />
+        <Route path="/m/signup" component={SignUp} />
+        <Route path="/m/logout" component={Logout} />
 
-                <Route
-                    path="/page/terms-and-conditions"
-                    component={LicenseDoc}
-                />
-                <Route path="/page/privacy-policy" component={PrivacyPolicy} />
-            </Switch>
-        </BrowserRouter>
-    );
+        <Route path="/page/terms-and-conditions" component={LicenseDoc} />
+        <Route path="/page/privacy-policy" component={PrivacyPolicy} />
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
 export default Router;

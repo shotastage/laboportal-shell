@@ -7,11 +7,11 @@ import { APIClient } from "./services/APIClient";
 import { GlidingThumb, AppContainer, Heading1 } from "./AppComponent";
 import NavigationBar from "./pageComponents/NavBar/NavigationBar";
 import {
-    AppDirectory,
-    AppDirItem,
-    AppDirItemExternal,
-    AppDirItemIcon,
-    AppLabel
+  AppDirectory,
+  AppDirItem,
+  AppDirItemExternal,
+  AppDirItemIcon,
+  AppLabel,
 } from "./pageComponents/AppDirectory/AppDirectory";
 
 import Animate from "animate.css-react";
@@ -34,175 +34,150 @@ import MailIcon from "./assets/icons/MailIcon.svg";
 import styled from "styled-components";
 
 const articleDirectoryStyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    overflowX: 'scroll'
+  display: "flex",
+  flexDirection: "row",
+  overflowX: "scroll",
 };
 
 const articleCardStyle = {
-    width: '390px',
-    height: '200px',
-    background: 'white',
-    padding: '15px',
-    paddingTop: '3px',
-    margin: '10px',
-    borderRadius: '10px'
+  width: "390px",
+  height: "200px",
+  background: "white",
+  padding: "15px",
+  paddingTop: "3px",
+  margin: "10px",
+  borderRadius: "10px",
 };
 
 // Page Componrnts
 // ------------------------------------------------------------------------------
 class App extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            data: [],
-            originUrl: "",
-            articles: []
-        };
-    }
-
-    toMeeting = () => {
-        this.props.history.push("/");
+    this.state = {
+      data: [],
+      originUrl: "",
+      articles: [],
     };
+  }
 
-    fetchAPI() {
-        APIClient.GET("/api/articles", data => {
-            this.setState({
-                articles: data
-            });
-        });
-    }
+  toMeeting = () => {
+    this.props.history.push("/");
+  };
 
-    linkTo(path) {
-        window.location.href = "/article/" + path;
-    }
+  fetchAPI() {
+    APIClient.GET("/api/articles", (data) => {
+      this.setState({
+        articles: data,
+      });
+    });
+  }
 
-    componentDidMount() {
-        this.fetchAPI();
-    }
+  linkTo(path) {
+    window.location.href = "/article/" + path;
+  }
 
-    toMeeting = () => {
-        this.props.history.push("/meetings");
-    };
+  componentDidMount() {
+    this.fetchAPI();
+  }
 
-    render() {
-        const { t } = this.props;
+  toMeeting = () => {
+    this.props.history.push("/meetings");
+  };
 
-        return (
-            <>
-                <NavigationBar>RG Portal</NavigationBar>
+  render() {
+    const { t } = this.props;
 
-                <AppContainer>
-                    <h2>{t("app")}</h2>
-                    <AppDirectory>
-                        <AppDirItem to="/blog">
-                            <AppDirItemIcon
-                                type="image/svg+xml"
-                                data={BlogIcon}
-                            ></AppDirItemIcon>
-                            <AppLabel>Blog</AppLabel>
-                        </AppDirItem>
-                        <AppDirItem>
-                            <AppDirItemIcon
-                                type="image/svg+xml"
-                                data={FileIcon}
-                            />
+    return (
+      <>
+        <NavigationBar>RG Portal</NavigationBar>
 
-                            <AppLabel>Upload Files</AppLabel>
-                        </AppDirItem>
-                        <AppDirItem to="/thesis">
-                            <AppDirItemIcon
-                                type="image/svg+xml"
-                                data={ThesisIcon}
-                            />
-                            <AppLabel>Thesis</AppLabel>
-                        </AppDirItem>
-                        <AppDirItem to="/wip">
-                            <AppDirItemIcon
-                                type="image/svg+xml"
-                                data={WIPIcon}
-                            />
-                            <AppLabel>WIP</AppLabel>
-                        </AppDirItem>
-                        <AppDirItem to="/term">
-                            <AppDirItemIcon
-                                type="image/svg+xml"
-                                data={TermIcon}
-                            />
-                            <AppLabel>TERM</AppLabel>
-                        </AppDirItem>
+        <AppContainer>
+          <h2>{t("app")}</h2>
+          <AppDirectory>
+            <AppDirItem to="/blog">
+              <AppDirItemIcon
+                type="image/svg+xml"
+                data={BlogIcon}
+              ></AppDirItemIcon>
+              <AppLabel>Blog</AppLabel>
+            </AppDirItem>
+            <AppDirItem>
+              <AppDirItemIcon type="image/svg+xml" data={FileIcon} />
 
-                        <AppDirItem to="/meetings">
-                            <AppDirItemIcon
-                                onClick={this.toMeeting}
-                                type="image/svg+xml"
-                                data={MTGICon}
-                            />
-                            <AppLabel>Meetings</AppLabel>
-                        </AppDirItem>
+              <AppLabel>Upload Files</AppLabel>
+            </AppDirItem>
+            <AppDirItem to="/thesis">
+              <AppDirItemIcon type="image/svg+xml" data={ThesisIcon} />
+              <AppLabel>Thesis</AppLabel>
+            </AppDirItem>
+            <AppDirItem to="/wip">
+              <AppDirItemIcon type="image/svg+xml" data={WIPIcon} />
+              <AppLabel>WIP</AppLabel>
+            </AppDirItem>
+            <AppDirItem to="/term">
+              <AppDirItemIcon type="image/svg+xml" data={TermIcon} />
+              <AppLabel>TERM</AppLabel>
+            </AppDirItem>
 
-                        <AppDirItemExternal
-                            href={"https://dash.sfc.wide.ad.jp/"}
-                        >
-                            <AppDirItemIcon
-                                type="image/svg+xml"
-                                data={RGRootIcon}
-                            />
-                            <AppLabel>RGRoot Portal</AppLabel>
-                        </AppDirItemExternal>
+            <AppDirItem to="/meetings">
+              <AppDirItemIcon
+                onClick={this.toMeeting}
+                type="image/svg+xml"
+                data={MTGICon}
+              />
+              <AppLabel>Meetings</AppLabel>
+            </AppDirItem>
 
-                        <AppDirItemExternal
-                            href={"https://mail.sfc.wide.ad.jp/"}
-                        >
-                            <AppDirItemIcon
-                                type="image/svg+xml"
-                                data={MailIcon}
-                            />
-                            <AppLabel>RG Mail</AppLabel>
-                        </AppDirItemExternal>
+            <AppDirItemExternal href={"https://dash.sfc.wide.ad.jp/"}>
+              <AppDirItemIcon type="image/svg+xml" data={RGRootIcon} />
+              <AppLabel>RGRoot Portal</AppLabel>
+            </AppDirItemExternal>
 
-                        <AppDirItem>
-                            <AppDirItemIcon
-                                type="image/svg+xml"
-                                data={ProfileIcon}
-                            />
-                            <AppLabel>My Account</AppLabel>
-                        </AppDirItem>
-                    </AppDirectory>
+            <AppDirItemExternal href={"https://mail.sfc.wide.ad.jp/"}>
+              <AppDirItemIcon type="image/svg+xml" data={MailIcon} />
+              <AppLabel>RG Mail</AppLabel>
+            </AppDirItemExternal>
 
-                    <h1>{t("update")}</h1>
+            <AppDirItem>
+              <AppDirItemIcon type="image/svg+xml" data={ProfileIcon} />
+              <AppLabel>My Account</AppLabel>
+            </AppDirItem>
+          </AppDirectory>
 
-                    <div style={articleDirectoryStyle}>
-                        <div style={articleCardStyle}>
-                            <h3>新しいポータルについて</h3>
-                            <p>
-                                RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
-                            </p>
-                        </div>
-                        <div style={articleCardStyle}>
-                            <h3>新しいポータルについて</h3>
-                            <p>
-                                RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
-                            </p>
-                        </div>
-                        <div style={articleCardStyle}>
-                            <h3>新しいポータルについて</h3>
-                            <p>
-                                RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
-                            </p>
-                        </div>
-                        <div style={articleCardStyle}>
-                            <h3>新しいポータルについて</h3>
-                            <p>
-                                RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
-                            </p>
-                        </div>
-                    </div>
-                </AppContainer>
-            </>
-        );
-    }
+          <h1>{t("update")}</h1>
+
+          <div style={articleDirectoryStyle}>
+            <div style={articleCardStyle}>
+              <h3>新しいポータルについて</h3>
+              <p>
+                RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
+              </p>
+            </div>
+            <div style={articleCardStyle}>
+              <h3>新しいポータルについて</h3>
+              <p>
+                RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
+              </p>
+            </div>
+            <div style={articleCardStyle}>
+              <h3>新しいポータルについて</h3>
+              <p>
+                RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
+              </p>
+            </div>
+            <div style={articleCardStyle}>
+              <h3>新しいポータルについて</h3>
+              <p>
+                RGポータルはリニューアルしました。詳しい使い方は後ほど載せますうん
+              </p>
+            </div>
+          </div>
+        </AppContainer>
+      </>
+    );
+  }
 }
 
 export default withRouter(withTranslation()(App));

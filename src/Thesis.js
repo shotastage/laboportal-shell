@@ -5,10 +5,10 @@ import { APIClient } from "./services/APIClient";
 import { GlidingThumb, AppContainer, Heading1 } from "./AppComponent";
 import NavigationBar from "./pageComponents/NavBar/NavigationBar";
 import {
-    AppDirectory,
-    AppDirItem,
-    AppDirItemIcon,
-    AppLabel
+  AppDirectory,
+  AppDirItem,
+  AppDirItemIcon,
+  AppLabel,
 } from "./pageComponents/AppDirectory/AppDirectory";
 
 import { Row } from "./components/Layout";
@@ -26,55 +26,55 @@ import MailIcon from "./assets/icons/MailIcon.svg";
 import styled from "styled-components";
 
 const MeetingDirectory = styled.div`
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-    overflow-x: scroll;
+  overflow-x: scroll;
 `;
 
 // Page Componrnts
 // ------------------------------------------------------------------------------
 class Thesis extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            data: [],
-            originUrl: "",
-            articles: []
-        };
-    }
+    this.state = {
+      data: [],
+      originUrl: "",
+      articles: [],
+    };
+  }
 
-    fetchAPI() {
-        APIClient.GET("/api/articles", data => {
-            this.setState({
-                articles: data
-            });
-        });
-    }
+  fetchAPI() {
+    APIClient.GET("/api/articles", (data) => {
+      this.setState({
+        articles: data,
+      });
+    });
+  }
 
-    linkTo(path) {
-        window.location.href = "/article/" + path;
-    }
+  linkTo(path) {
+    window.location.href = "/article/" + path;
+  }
 
-    componentDidMount() {
-        this.fetchAPI();
-    }
+  componentDidMount() {
+    this.fetchAPI();
+  }
 
-    render() {
-        const { t } = this.props;
+  render() {
+    const { t } = this.props;
 
-        return (
-            <>
-                <NavigationBar>Thesis</NavigationBar>
+    return (
+      <>
+        <NavigationBar>Thesis</NavigationBar>
 
-                <AppContainer>
-                    <h1>現在開発中です.</h1>
-                    <MeetingDirectory></MeetingDirectory>
-                </AppContainer>
-            </>
-        );
-    }
+        <AppContainer>
+          <h1>現在開発中です.</h1>
+          <MeetingDirectory></MeetingDirectory>
+        </AppContainer>
+      </>
+    );
+  }
 }
 
 export default withTranslation("meetings")(Thesis);

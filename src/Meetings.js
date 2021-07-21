@@ -22,16 +22,16 @@ import MailIcon from "./assets/icons/MailIcon.svg";
 import styled from "styled-components";
 
 const MeetingDirectory = styled.div`
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-    overflow-x: scroll;
+  overflow-x: scroll;
 `;
 
 const ListContainer = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const ListCard = styled.a`
@@ -53,98 +53,100 @@ const ListCard = styled.a`
   color: #333;
 `;
 
-
 const ListTitle = styled.h2`
-    margin: 0;
-    width: 50%;
+  margin: 0;
+  width: 50%;
 `;
 
 const ListControlArea = styled.div`
-    width: 50%;
+  width: 50%;
 `;
 
 const list = [
-    {
-        "name": "第1回 RG NEW COMMER",
-        "start_on": "2020/04/01"
-    },
-    {
-        "name": "第2回 RG Account Setup",
-        "start_on": "2020/04/02"
-    },
-    {
-        "name": "第2回 RG Account Setup",
-        "start_on": "2020/04/02"
-    },
-    {
-        "name": "第2回 RG Account Setup",
-        "start_on": "2020/04/02"
-    },
-    {
-        "name": "第2回 RG Account Setup",
-        "start_on": "2020/04/02"
-    },
-    {
-        "name": "第2回 RG Account Setup",
-        "start_on": "2020/04/02"
-    }
-]
+  {
+    name: "第1回 RG NEW COMMER",
+    start_on: "2020/04/01",
+  },
+  {
+    name: "第2回 RG Account Setup",
+    start_on: "2020/04/02",
+  },
+  {
+    name: "第2回 RG Account Setup",
+    start_on: "2020/04/02",
+  },
+  {
+    name: "第2回 RG Account Setup",
+    start_on: "2020/04/02",
+  },
+  {
+    name: "第2回 RG Account Setup",
+    start_on: "2020/04/02",
+  },
+  {
+    name: "第2回 RG Account Setup",
+    start_on: "2020/04/02",
+  },
+];
 
 // Page Componrnts
 // ------------------------------------------------------------------------------
 class Meetings extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            data: [],
-            originUrl: "",
-            articles: []
-        };
-    }
+    this.state = {
+      data: [],
+      originUrl: "",
+      articles: [],
+    };
+  }
 
-    fetchAPI() {
-        APIClient.GET("/api/articles", data => {
-            this.setState({
-                articles: data
-            });
-        });
-    }
+  fetchAPI() {
+    APIClient.GET("/api/articles", (data) => {
+      this.setState({
+        articles: data,
+      });
+    });
+  }
 
-    linkTo(path) {
-        window.location.href = "/article/" + path;
-    }
+  linkTo(path) {
+    window.location.href = "/article/" + path;
+  }
 
-    componentDidMount() {
-        this.fetchAPI();
-    }
+  componentDidMount() {
+    this.fetchAPI();
+  }
 
-    render() {
-        const { t } = this.props;
+  render() {
+    const { t } = this.props;
 
-        return (
-            <>
-                <NavigationBar>Meetings</NavigationBar>
+    return (
+      <>
+        <NavigationBar>Meetings</NavigationBar>
 
-                <Container>
-                    <Heading1>{t("scheduledMeeting")}</Heading1>
-                    <MeetingDirectory>
-                        <ListContainer>
-                        <For of={list} ifEmpty={<em>No meeting!</em>} as={item =>
-                            <ListCard href="/">
-                                <ListTitle>{item.name}</ListTitle>
-                                <ListControlArea>
-                        <p>{item.start_on}</p>
-                                </ListControlArea>
-                            </ListCard>
-                        } />
-                        </ListContainer>
-                        
-                    </MeetingDirectory>
-                </Container>
-            </>
-        );
-    }
+        <Container>
+          <Heading1>{t("scheduledMeeting")}</Heading1>
+          <MeetingDirectory>
+            <ListContainer>
+              <For
+                of={list}
+                ifEmpty={<em>No meeting!</em>}
+                as={(item) => (
+                  <ListCard href="/">
+                    <ListTitle>{item.name}</ListTitle>
+                    <ListControlArea>
+                      <p>{item.start_on}</p>
+                    </ListControlArea>
+                  </ListCard>
+                )}
+              />
+            </ListContainer>
+          </MeetingDirectory>
+        </Container>
+      </>
+    );
+  }
 }
 
 export default withTranslation("meetings")(Meetings);
